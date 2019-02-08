@@ -1,0 +1,312 @@
+======================================readysetgo admin and user==============================================================
+steps -> http://localhost/readysetgostaffing/Spreadsheets/spreadsheets
+manually fields-> end date, shift time, client name, talent name
+
+fileds inside database table es_spreadsheet_records
+event_id, start_date, end_date, event_shift
+
+http://localhost/readysetgostaffing/SpreadsheetRecords/addNewEventScheduleRecord addNewEventLogRecord addNewEventPayrollRecord get_event_data and user events
+
+/var/www/html/readysetgostaffing/app/View/SpreadsheetRecords/add_new_event_schedule_record.ctp
+
+/var/www/html/readysetgostaffing/app/webroot/js/admin_js/all_grid/event_sheet_grid.js
+
+/var/www/html/readysetgostaffing/app/webroot/js/admin_js/all_grid/user_event_sheet_grid.js
+
+===============================weekly emails groups code=======================================================================
+			<tr>
+				<td colspan="2" style="text-align:center;">
+					<div style="background-image:url(JUri::root().templates/lovematch/images/head-bg.jpg);background-repeat:repeat-x;background-position:center;">
+						<span style="background: #fff;display: inline-table;width: auto;padding:0 15px;color:#ca333e;margin:-23px auto 0;">YOUR GROUP MATCHES</span>
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="2">
+					<table style="padding-bottom:20px;">
+						<tr>';
+						if(empty($joinedgroups)){
+							$mailvariable .='<td style="padding:5px;color:#474747;line-height:1.3">Unfortunately you dont have any matches at this time. Please update your profile to maximize your best potential matches.</td>';
+
+								} 
+									else {
+							foreach ($joinedgroups as $key => $joingrp) {
+								//echo '<pre>';print_r($joingrp); die; 
+								$imggrp='';
+								$imggrp=JUri::root().$joingrp['avatar'];
+					
+								$mailvariable .= '
+								<td style="padding:5px;">';
+									
+									$mailvariable .= '<a href="'.JUri::root().'index.php?option=com_lmgroups
+				&view=groupprofile&groupid='.$joingrp['id'].'">				
+				
+				<img src="'.$imggrp.'" style="height:45px; width:45px;border-radius:5px;">
+				
+				</a>
+
+					</td>';
+				}
+						/*if(sizeof($joinedgroups)>5){
+							$mailvariable .='<h3><a href='.JUri::base().'>View more User go to the site</a></h3>';
+						}*/
+					}
+					
+			$mailvariable .='</tr>';
+				$mailvariable .=  '</table>
+			</td>
+		</tr>
+================================carosel lastadded profile index.php===================================================================
+	<div class="imageCarousel">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="">
+                <div id="myCarousel1" class="carousel slide">
+                  <!-- Carousel items -->
+                  <div class="carousel-inner">
+                  <!--/item-->
+                  <jdoc:include type="modules" name="latestadded" style="none" />
+                  </div>
+                  <!--/carousel-inner-->
+                  <a class="left carousel-control" id="prev" onclick="prev();"  href="#myCarousel1" data-slide="prev">‹</a>
+                  <a class="right carousel-control" onclick="next();" href="#myCarousel1" data-slide="next">›</a>
+                </div>
+                <!--/myCarousel-->
+              </div>
+              <!--/well-->
+            </div>
+          </div>
+        </div>
+=====================================================lovematch======================================================================
+views  ->
+com_lmgroups/views/groupprofile/tmpl/discussion.php
+/home/drlove/public_html/components/com_lmgroups/views/groupprofile/tmpl/event.php
+
+========================check CSS pending================================================================================
+media check index page
+1> /home/drlove/public_html/components/com_questionmatch/views/questionmatchs/tmpl/payment.php
+<style type="text/css">
+  #Paypal .payment_inputs{margin: 10px auto 30px;}
+</style>
+2> /home/drlove/public_html/components/com_users/views/allplans/tmpl/default.php
+<style type="text/css">
+  .rateNew{width:49%;}
+</style>
+
+/home/drlove/public_html/components/com_users/views/fullplan/tmpl/payment.php
+<style type="text/css">
+  #Paypal .payment_inputs{margin: 10px auto 30px;}
+</style>
+================================================================forgot pass word mod_login modules===========================
+<div class="modal fade bs-example-modal-sm" id="forgot" role="dialog" data-backdrop="false">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="forgotDIV">
+                <div class="modal-header">
+                     <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span></button>
+                     <h4 class="modal-title">Forgot Password/Username ?</h4>
+                      <p>If you forgot your password, please enter your email address below and we'll email you once you press submit.</p>
+                </div>
+                <style type="text/css">
+                  .button-email {
+                    padding: 6px 12px;
+                  }
+                </style>
+
+                <div class="modal-body text-center">
+                    <div class="lable-error login-modalEdit">
+                        <div class="dispalying-EmailError">
+                             <input type='text' name='email' id="email" placeholder='Your email'required/>
+                                                       
+                        </div>                      
+                        <button class="redBtn button-email" type="button" name='submit' value='Submit' id='forgotId'>Submit</button>
+                    </div>
+                    <div class="clearfix"></div>
+                    <label id='error' class="error center-block"></label>
+                </div>
+              </div>
+              <!-- reset body -->
+               <div class="confirmMessage" style="display:none;">
+                <div class="modal-header">
+                     <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span></button>
+                     <h4 class="modal-title">Reset Password</h4>
+                </div>
+                <div class="modal-body text-center">
+                  <p class="logIn-Txt-message">A reset link has been sent to your email address.</p>
+                </div>
+              </div>
+      </div>
+    </div>
+ </div>
+
+check url and server url's keep
+=============================================================beautyNbeast===========================================================
+old
+	public $user = 'drlove_doctorlov';
+	public $password = 'H*9-L4DFk^MK';
+
+latest
+	public $user = 'drlove_doctor';
+	public $password = 'l5Ad(arwG2=w';
+
+==============09/01/2019 =====================date logic=============================================================================
+	<!-- Login Modal pop up-->
+<div id="loginModal" class="modal fade" role="dialog" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body login-popup">
+      <button aria-label="Close" data-dismiss="modal" class="close" type="button">
+        <span aria-hidden="true">×</span>
+      </button>
+      <h1 class="modal-title text-center">Login</h1>
+        <jdoc:include type="modules" name="login" style="none" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Register Modal pop up-->
+<div class="modal fade" id="registerModal" role="dialog" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body regForm">
+         <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span></button>
+          <h1 class="modal-title">Join , Its Free <span>and find your Match today</span></h1>
+         <jdoc:include type="modules" name="register" style="none" />
+        </div>
+    </div>
+  </div>
+</div>
+================================login and register model on header index page====================================================
+	<!-- Login Modal pop up-->
+<div class="modal fade bs-example-modal-sm" id="loginModal" role="dialog" data-backdrop="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title">Login</h4>
+        </div>
+        <div class="modal-body text-center login">
+          <jdoc:include type="modules" name="login" style="none" />
+        </div>
+    </div>
+  </div>
+</div>
+=============================================================================================================================
+views = fullplan, allplans, questionmatches payment page, personality payment page
+users component -> router.php page
+index page -> privacy policy, css, admin modules privacy policy and inside privacy link
+Membership Status Jroute path index page, check path Jroute
+check payments questions match tab, personality match tab, message block tab-> write javascript:void(0) on anchor tag
+check logout redirest and mail pop up in between site suggested user side
+question and personlity match view forms Jroute
+===============================================================================================================================
+save us->  https://crontab-generator.org/c
+===============================================================================================================================
+https://stackoverflow.com/questions/11289551/argument-list-too-long-error-for-rm-cp-mv-commands
+
+Steps SSH:-
+ssh root@108.167.175.143
+cd /home/drlove/
+ls
+du -h --max-depth=1
+find . -name "index.php?option=*" -print0 | xargs -0 rm
+
+old password - public $password = 'l5Ad(arwG2=w';
+change password current password use  &!i2N7bh5bSW
+
+check message plan = 3
+/var/www/html/lovematch/components/com_users/views/userprofile/tmpl/default.php
+/var/www/html/lovematch/components/com_users/views/usersearch/tmpl/default.php
+/var/www/html/lovematch/components/com_meetme/views/meetme/tmpl/default.php
+/var/www/html/lovematch/components/com_users/views/messages/default.php
+/var/www/html/lovematch/components/com_users/views/messages/view.html.php
+/var/www/html/lovematch/components/com_users/controller.php
+
+changes on server 16 Jan 2019
+check message plan = 3
+/var/www/html/lovematch/components/com_users/views/userprofile/view.html.php
+/var/www/html/lovematch/components/com_users/views/usersearch/view.html.php
+/var/www/html/lovematch/components/com_meetme/views/meetme/tmpl/default.php
+/var/www/html/lovematch/components/com_meetme/views/meetme/view.html.php
+/var/www/html/lovematch/components/com_users/views/messages/default.php
+/var/www/html/lovematch/components/com_users/views/messages/view.html.php
+/var/www/html/lovematch/components/com_users/controller.php
+
+#a^U.2=F^oGo email smtp password wp-admin
+http://52.55.215.33/privacylock
+http://new.privacylockapp.com
+
+vlasen
+jashaun6699
+
+original path -> /usr/bin/wget -qO- "https://doctorlovematch.com/component/questionmatch/?task=hitcron" >/dev/null 2>&1
+
+old path -> /usr/bin/wget -O /dev/null "https://doctorlovematch.com/component/questionmatch/?task=hitcron" >/dev/null 2>&1
+
+*/20	*	*	*	* /usr/bin/wget -O /dev/null "https://doctorlovematch.com/index.php?option=com_questionmatch&task=questionmatchsCron" >/dev/null 2>&1
+
+*/15	*	*	*	* /usr/bin/wget -O /dev/null "https://doctorlovematch.com/index.php?option=com_personalitymatch&task=personalitymatchsCron" >/dev/null 2>&1
+=================================================================================================================================
+SELECT *  FROM `j25bq_usernotifications` WHERE `catgories` LIKE 'groupjoin' AND `userid` = 534 AND `memberid` = 391 AND `requestid` LIKE '185'
+SELECT * FROM `j25bq_personality_compatibility` where (userid='391' and compatibleid='389') or (compatibleid='391' and userid='389')
+===================================================================================================================================
+Artificial Intelligence
+Location: Trivandrum, Kerala
+Role: Analyst
+Job Responsibilities:
+
+•Programming expertise on Python or R and understanding of basic libraries for machine learning.
+•Exposure to NLP and OCR technologies is added advantage.
+•Proficiency with a deep learning framework such as TensorFlow, Keras, AWS/ Azure AI, etc. is preferred.
+•Proficiency with popular databases.
+•Familiarity with Linux.
+
+Qualification/skills:
+•Bachelor’s degree in Computer Science and above
+•Knowledge of Python, R. Development frameworks like Tensorflow, AWS, Azure/AI.
+•Good knowledge of popular databases and NoSQL data sources.
+
+check cron on beauty and breast
+code server to local beuuty and beast
+check administrator folder lovematch folder script.php-> done
+update datetime compatiblity me and notification me 
+check Iphone API compatibity
+check queries
+check validation on bottom speciaily payment page
+
+check query out batch insert
+
+root@gunjantewari:~# mysql -u root -p
+root@gunjantewari:~# mysql -u root -p lovematchlive < /home/gunjantewari/Downloads/4-tables/j25bq_usernotifications.sql
+
+
+ALTER TABLE users AUTO_INCREMENT=0;
+
+	public function mailcheck($sender,$recipient,$subject,$message){
+		$mailer = JFactory::getMailer();
+		$mailer->setSender($sender);
+		$mailer->addRecipient($recipient);
+		$mailer->setSubject($subject);
+		$mailer->isHTML(true);
+		$mailer->Encoding = 'base64';
+		$mailer->setBody($message);
+		# Add a blind carbon copy
+		$mailer->addBCC("blindcopy@yourdomain.com");
+		$mailer->addCC("blindcopy@yourdomain.com");
+		$send = $mailer->Send();
+		return true;
+		}
+$this->mailcheck('info@drlovematch.com',$email,$subject,$message);
+
+
+bitbucket and uploads codes and text
+check dropbox login
+check previous github
+
+dropbox login -> Email ->nishant.gupta@gmail.com
+				Password -> nishant@123
+
+Notice (8): Undefined index: TalentImage [APP/Controller/TalentsController.php, line 1179]
+
